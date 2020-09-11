@@ -4,10 +4,10 @@ FROM golang:latest
 LABEL maintainer="Rodrigues Diego <diego93rodrigues@gmail.com>"
 
 # Set the current working directory inside the container 
-WORKDIR /
+WORKDIR /app
 
 # Copy the source from the current directory to the working Directory inside the container 
-COPY . .
+COPY . /app
 
 RUN go build
 
@@ -18,4 +18,7 @@ RUN chmod +x /wait
 
 EXPOSE 3000
 
-CMD /wait && ./backend
+#This is used to run the application with live reload
+RUN go get github.com/githubnemo/CompileDaemon
+
+ENTRYPOINT /wait && CompileDaemon --build="go build -o myapp ." --command=./myapp
