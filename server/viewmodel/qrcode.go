@@ -1,10 +1,9 @@
 package viewmodel
 
-// PublicUser - return a struct with few fields
-type PublicUser struct {
-	ID        int64  `json:"id"`
-	Status    string `json:"status"`
-	CreatedAt string `json:"created_at"`
+// QRCode - receive data to create a new QRCode
+type QRCode struct {
+	Price          float64 `json:"price"`
+	ExpirationTime int64   `json:"expiration_time" mapper:"-"`
 }
 
 // PrivateUser - return a struct with all data. It's need a token to request

@@ -67,3 +67,13 @@ func Instance() (contract.RepoManager, error) {
 func (c *DBManager) Ping() contract.PingRepo {
 	return nil
 }
+
+//QRCode returns the qrcode set
+func (c *DBManager) QRCode() contract.QRCodeRepo {
+	return newQRCodeRepo(c.db)
+}
+
+//Company returns the company set
+func (c *DBManager) Company() contract.CompanyRepo {
+	return newCompanyRepo(c.db)
+}

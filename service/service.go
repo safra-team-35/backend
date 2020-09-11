@@ -17,6 +17,7 @@ func New(db contract.RepoManager) *Service {
 
 //Manager defines the services aggregator interface
 type Manager interface {
+	QRCodeService(svc *Service) contract.QRCodeService
 }
 
 type serviceManager struct {
@@ -26,4 +27,8 @@ type serviceManager struct {
 // NewServiceManager return a service manager instance
 func NewServiceManager() Manager {
 	return &serviceManager{}
+}
+
+func (s *serviceManager) QRCodeService(svc *Service) contract.QRCodeService {
+	return newQRCodeService(svc)
 }
