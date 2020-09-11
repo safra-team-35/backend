@@ -37,10 +37,9 @@ func NewController(qrcodeService contract.QRCodeService, mapper mapper.Mapper) *
 	return instance
 }
 
-// handlePing - handle a qrcode create request
 func (s *Controller) handleCreateQRCode(c *gin.Context) {
 
-	var input viewmodel.QRCode
+	var input viewmodel.QRCodeRequest
 
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
@@ -49,7 +48,7 @@ func (s *Controller) handleCreateQRCode(c *gin.Context) {
 		c.JSON(restErr.StatusCode(), restErr)
 		return
 	}
-	uuid := c.Param("identifier_id")
+	uuid := c.Param("company_id")
 
 	var QRCode entity.QRCode
 
@@ -70,4 +69,25 @@ func (s *Controller) handleCreateQRCode(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"hash": hash})
+}
+
+func (s *Controller) handleGetQRCodeDataByHash(c *gin.Context) {
+
+	hash := c.Param("hash")
+
+	qrcodeData, err := s.qrcodeService.GetQRCodeDataByHash(hash)
+	if err != nil {
+		c.JSON(err.StatusCode(), err)
+		return
+	}
+
+	response := viewmodel.QRCodeResponse{}
+	mapErr := s.mapper.From(qrcodeData).To(&response)
+	if mapErr != nil {
+		err = resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
+		c.JSON(err.StatusCode(), err)
+	}
+
+	c.JSON(http.StatusOK, response)
+
 }

@@ -45,3 +45,7 @@ func (s *qrcodeService) CreateQRCode(qrcode entity.QRCode, uuid string) (string,
 
 	return qrcode.Hash, nil
 }
+
+func (s *qrcodeService) GetQRCodeDataByHash(hash string) (qrcode entity.QRCode, err resterrors.RestErr) {
+	return s.svc.db.QRCode().GetByHash(hash)
+}

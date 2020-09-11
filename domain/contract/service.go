@@ -12,4 +12,5 @@ type PingService interface {
 // QRCodeService holds a qrcode service operations
 type QRCodeService interface {
 	CreateQRCode(qrcode entity.QRCode, uuid string) (hash string, err resterrors.RestErr)
+	GetQRCodeDataByHash(hash string) (qrcode entity.QRCode, err resterrors.RestErr)
 }

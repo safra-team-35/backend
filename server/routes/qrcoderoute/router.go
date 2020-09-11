@@ -20,5 +20,6 @@ func NewRouter(ctrl *Controller, router *gin.Engine) *QRCodeRouter {
 
 //RegisterRoutes is a routers map of qrcode requests
 func (r *QRCodeRouter) RegisterRoutes() {
-	r.router.POST("/:identifier_id/qrcode", r.ctrl.handleCreateQRCode)
+	r.router.POST("/:company_id/qrcode", r.ctrl.handleCreateQRCode)
+	r.router.GET("/qrcode/:hash", r.ctrl.handleGetQRCodeDataByHash)
 }

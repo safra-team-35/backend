@@ -18,6 +18,7 @@ type PingRepo interface{}
 // QRCodeRepo defines the data set for qrcode
 type QRCodeRepo interface {
 	CreateQRCode(qrcode entity.QRCode) resterrors.RestErr
+	GetByHash(hash string) (qrcode entity.QRCode, err resterrors.RestErr)
 }
 
 // CompanyRepo defines the data set for qrcode
