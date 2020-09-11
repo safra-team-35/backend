@@ -29,7 +29,7 @@ func (s *companyRepo) GetCompanyIDByUUID(uuid string) (int64, resterrors.RestErr
 
 	stmt, err := s.db.Prepare(query)
 	if err != nil {
-		logger.Error("GetGenreByID", err)
+		logger.Error("GetCompanyIDByUUID", err)
 		return 0, resterrors.NewInternalServerError("Database error")
 	}
 	defer stmt.Close()
@@ -41,7 +41,7 @@ func (s *companyRepo) GetCompanyIDByUUID(uuid string) (int64, resterrors.RestErr
 	)
 
 	if err != nil {
-		logger.Error("GetGenreByID", err)
+		logger.Error("GetCompanyIDByUUID", err)
 		return 0, mysqlutils.HandleMySQLError(err)
 	}
 
