@@ -30,4 +30,5 @@ type CompanyRepo interface {
 // UserRepo defines the data set for user
 type UserRepo interface {
 	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
+	CreateOrder(order entity.Order) (err resterrors.RestErr)
 }

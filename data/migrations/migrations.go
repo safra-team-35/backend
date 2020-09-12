@@ -155,7 +155,7 @@ var (
 				user_id INT NOT NULL,
 				company_id INT NOT NULL,
 				price DECIMAL(7,2) NOT NULL,
-				hash VARCHAR(5000) NOT NULL,
+				qrcode_id INT NOT NULL,
 				product_id INT NOT NULL,
 				payment_type INT NOT NULL,
 				address_id INT NOT NULL,
@@ -181,6 +181,11 @@ var (
 				CONSTRAINT fk_user_order
 					FOREIGN KEY (user_id)
 					REFERENCES wallet_db.tab_user (id)
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+				CONSTRAINT fk_qrcode_order
+					FOREIGN KEY (qrcode_id)
+					REFERENCES wallet_db.tab_qrcode (id)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,

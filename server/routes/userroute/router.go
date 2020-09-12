@@ -21,4 +21,5 @@ func NewRouter(ctrl *Controller, router *gin.Engine) *UserRouter {
 //RegisterRoutes is a routers map of user requests
 func (r *UserRouter) RegisterRoutes() {
 	r.router.GET("/user/:user_id/address", r.ctrl.handleGetUserAddress)
+	r.router.POST("/user/:user_id/order", r.ctrl.handleCreateNewOrder)
 }

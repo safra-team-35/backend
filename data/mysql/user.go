@@ -70,3 +70,43 @@ func (s *userRepo) GetUserAddress(userID int64) (addresses []entity.Address, res
 
 	return addresses, nil
 }
+
+func (s *userRepo) CreateOrder(order entity.Order) resterrors.RestErr {
+
+	query := `
+		INSERT INTO tab_order (
+			user_id,
+			company_id,
+			price,
+			qrcode_id,
+			product_id,
+			payment_type,
+			address_id
+		) 
+		VALUES	
+			(?, ?, ?, ?, ?, ?, ?);
+		`
+
+	stmt, err := s.db.Prepare(query)
+	if err != nil {
+		logger.Error("CreateQRCode", err)
+		return resterrors.NewInternalServerError("Database error")
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(
+		order.UserID,
+		order.CompanyID,
+		order.Price,
+		order.QRCodeID,
+		order.ProductID,
+		order.PaymentType,
+		order.AddressID,
+	)
+	if err != nil {
+		logger.Error("CreateQRCode", err)
+		return mysqlutils.HandleMySQLError(err)
+	}
+
+	return nil
+}

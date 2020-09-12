@@ -20,3 +20,32 @@ func newUserService(svc *Service) contract.UserService {
 func (s *userService) GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr) {
 	return s.svc.db.User().GetUserAddress(userID)
 }
+
+func (s *userService) CreateOrder(order entity.Order) (orderNumber string, err resterrors.RestErr) {
+
+	orderDetail, err := s.svc.db.QRCode().GetByHash(order.Hash)
+	if err != nil {
+		return orderNumber, err
+	}
+
+	order.CompanyID = orderDetail.CompanyID
+	order.Price = orderDetail.Price
+	order.ProductID = orderDetail.ProductID
+	order.QRCodeID = orderDetail.ID
+
+	err = s.svc.db.User().CreateOrder(order)
+	if err != nil {
+		return orderNumber, err
+	}
+
+	orderNumber, err = s.sendOrderToPartner()
+	if err != nil {
+		return orderNumber, err
+	}
+
+	return orderNumber, nil
+}
+
+func (s *userService) sendOrderToPartner() (orderNumber string, err resterrors.RestErr) {
+	return
+}

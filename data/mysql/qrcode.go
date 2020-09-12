@@ -56,10 +56,12 @@ func (s *qrcodeRepo) CreateQRCode(qrcode entity.QRCode) resterrors.RestErr {
 
 func (s *qrcodeRepo) GetByHash(hash string) (qrcode entity.QRCode, restErr resterrors.RestErr) {
 	query := `
-		SELECT 	
+		SELECT 
+			tq.id,
 			tq.company_id,
 			tcp.name,
-			tq.price
+			tq.price,
+			tq.product_id
 			
 		FROM 	tab_qrcode 	tq
 		INNER JOIN tab_company_partners tcp
@@ -77,9 +79,11 @@ func (s *qrcodeRepo) GetByHash(hash string) (qrcode entity.QRCode, restErr reste
 	result := stmt.QueryRow(hash)
 
 	err = result.Scan(
+		&qrcode.ID,
 		&qrcode.CompanyID,
 		&qrcode.CompanyName,
 		&qrcode.Price,
+		&qrcode.ProductID,
 	)
 
 	if err != nil {

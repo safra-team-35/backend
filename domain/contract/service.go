@@ -18,4 +18,5 @@ type QRCodeService interface {
 // UserService holds a user service operations
 type UserService interface {
 	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
+	CreateOrder(order entity.Order) (orderNumber string, err resterrors.RestErr)
 }
