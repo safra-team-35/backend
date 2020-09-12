@@ -152,6 +152,7 @@ var (
 			Description: "Creating table tab_order",
 			Script: `CREATE TABLE IF NOT EXISTS tab_order (
 				id INT NOT NULL AUTO_INCREMENT,
+				user_id INT NOT NULL,
 				company_id INT NOT NULL,
 				price DECIMAL(7,2) NOT NULL,
 				hash VARCHAR(5000) NOT NULL,
@@ -166,14 +167,20 @@ var (
 				UNIQUE INDEX ID_UNIQUE (id ASC),
 				INDEX fk_tab_order_tab_company_partners_idx (id ASC),
 				INDEX fk_tab_order_tab_user_address_idx (id ASC),
+				INDEX fk_tab_order_tab_user_idx (id ASC),
 				CONSTRAINT fk_company_order
 					FOREIGN KEY (company_id)
 					REFERENCES wallet_db.tab_company_partners (id)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION,
-				CONSTRAINT fk_company_order
+				CONSTRAINT fk_address_order
 					FOREIGN KEY (address_id)
 					REFERENCES wallet_db.tab_user_address (id)
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+				CONSTRAINT fk_user_order
+					FOREIGN KEY (user_id)
+					REFERENCES wallet_db.tab_user (id)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
