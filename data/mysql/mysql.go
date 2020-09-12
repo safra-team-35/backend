@@ -77,3 +77,8 @@ func (c *DBManager) QRCode() contract.QRCodeRepo {
 func (c *DBManager) Company() contract.CompanyRepo {
 	return newCompanyRepo(c.db)
 }
+
+//User returns the company set
+func (c *DBManager) User() contract.UserRepo {
+	return newUserRepo(c.db)
+}

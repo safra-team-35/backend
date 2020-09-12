@@ -120,7 +120,7 @@ var (
 				street VARCHAR(3000) NOT NULL,
 				number VARCHAR(11) NOT NULL,
 				complement VARCHAR(100) NULL DEFAULT '',
-				zip_code INT(11) NOT NULL,
+				zip_code VARCHAR(20) NOT NULL,
 				city VARCHAR(100) NOT NULL,
 				federative_unit CHAR(2) NOT NULL,
 				active TINYINT(1) NOT NULL DEFAULT 1,
@@ -144,7 +144,7 @@ var (
 				INSERT INTO tab_user_address 
 					(id,user_id,country,street,number,complement,zip_code,city,federative_unit)
 				VALUES
-				(1,1,'Brasil','Av Paulista','2100','5 andar','01310-300','São Paulo','SP' );
+				(1,1,'Brasil','Av Paulista','2100','5 andar','01310300','São Paulo','SP' );
 			`,
 		},
 		{

@@ -14,3 +14,8 @@ type QRCodeService interface {
 	CreateQRCode(qrcode entity.QRCode, uuid string) (hash string, err resterrors.RestErr)
 	GetQRCodeDataByHash(hash string) (qrcode entity.QRCode, err resterrors.RestErr)
 }
+
+// UserService holds a user service operations
+type UserService interface {
+	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
+}

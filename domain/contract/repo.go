@@ -10,6 +10,7 @@ type RepoManager interface {
 	Ping() PingRepo
 	QRCode() QRCodeRepo
 	Company() CompanyRepo
+	User() UserRepo
 }
 
 // PingRepo defines the data set for ping
@@ -24,4 +25,9 @@ type QRCodeRepo interface {
 // CompanyRepo defines the data set for qrcode
 type CompanyRepo interface {
 	GetCompanyIDByUUID(uuid string) (int64, resterrors.RestErr)
+}
+
+// UserRepo defines the data set for user
+type UserRepo interface {
+	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
 }
