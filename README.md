@@ -1,13 +1,19 @@
 ## 📝 Project
+<img src=".github/PagarCSafra.png" >
 
-[Demo video]()
 ## Description
+💳 This application aims to offer a new disruptive way to shop online.
+  
+[Demo video]()  
 
 * Language:
   - [Golang](https://golang.org/)  
 
+* Arquitetura técnica:
+  - <img src=".github/DiagramaTecnico.png" width="700" height="600">
+
 * Database:
-  - MySQL  
+  - MySQL
 <img src="" >
 
 ## ❗ Requirements

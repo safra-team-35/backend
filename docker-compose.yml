@@ -21,7 +21,7 @@ services:
       - app-network
   
   db:
-    container_name: wallet-db
+    container_name: mysql-service
     build: .docker/mysql
     command: --innodb-use-native-aio=0
     cap_add:
