@@ -78,13 +78,14 @@ func (s *userRepo) CreateOrder(order entity.Order) resterrors.RestErr {
 			user_id,
 			company_id,
 			price,
+			freight,
 			qrcode_id,
 			product_id,
 			payment_type,
 			address_id
 		) 
 		VALUES	
-			(?, ?, ?, ?, ?, ?, ?);
+			(?, ?, ?, ?, ?, ?, ?, ?);
 		`
 
 	stmt, err := s.db.Prepare(query)
@@ -98,6 +99,7 @@ func (s *userRepo) CreateOrder(order entity.Order) resterrors.RestErr {
 		order.UserID,
 		order.CompanyID,
 		order.Price,
+		order.Freight,
 		order.QRCodeID,
 		order.ProductID,
 		order.PaymentType,

@@ -191,5 +191,10 @@ var (
 					ON UPDATE NO ACTION
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
+		{
+			Version:     11,
+			Description: "Adding column freight to table order",
+			Script:      "ALTER TABLE tab_order ADD COLUMN freight DECIMAL(7,2) NOT NULL AFTER price;",
+		},
 	}
 )
