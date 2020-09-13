@@ -7,7 +7,7 @@
   - [Golang](https://golang.org/)  
 
 * Database:
-- MySQL  
+  - MySQL  
 <img src="" >
 
 ## ❗ Requirements
