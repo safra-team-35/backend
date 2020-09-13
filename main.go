@@ -7,6 +7,7 @@ import (
 	"github.com/safra-team-35/backend/data"
 	"github.com/safra-team-35/backend/server"
 
+	"github.com/gin-contrib/cors"
 	"github.com/safra-team-35/backend/service"
 )
 
@@ -20,6 +21,8 @@ func main() {
 	svc := service.New(db)
 	server := server.InitServer(svc)
 	logger.Info("About to start the application...")
+
+	server.Use(cors.Default())
 
 	port := os.Getenv("PORT")
 
