@@ -27,9 +27,6 @@
 ##### Get user addresses list
 `GET http://34.71.109.67:3000/user/:user_id/address`
 
-##### Transfere valores entre contas
-`GET [host]/accounts/v1/accounts/{accountId}/transfers`
-
 ##### Create new order for user
 `POST http://34.71.109.67:3000/user/:user_id/order`
 
