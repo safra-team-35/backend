@@ -22,7 +22,7 @@ type DBManager struct {
 func Instance() (contract.RepoManager, error) {
 	cfg := config.GetDBConfig()
 
-	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8",
+	dataSourceName := fmt.Sprintf("%s:root@tcp(%s:%s)/%s?charset=utf8",
 		cfg.Username, cfg.Password, cfg.Host, cfg.Port, cfg.DBName,
 	)
 
