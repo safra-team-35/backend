@@ -218,20 +218,24 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/qrcode/:hash",
+					"raw": "http://34.71.109.67:3000/user/:user_id/order_summary",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"34",
+						"71",
+						"109",
+						"67"
 					],
 					"port": "3000",
 					"path": [
-						"qrcode",
-						":hash"
+						"user",
+						":user_id",
+						"order_summary"
 					],
 					"variable": [
 						{
-							"key": "hash",
-							"value": "8463725d15a6592e02ec7f6030937eff238dbe091cb713e10ad9f49deadfa611"
+							"key": "user_id",
+							"value": "1"
 						}
 					]
 				}
@@ -248,7 +252,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"channel\": \"safra\",\r\n            \"data\": \"2020-07-14\",\r\n            \"description\": \"Veja no Morning Call desta terça-feira, 14 de julho, como o Ibovespa perdeu ontem os 100 mil pontos, após passar a maior parte do pregão acima desse nível.\",\r\n            \"id\": \"_V8f_Su9_RA\",\r\n            \"links\": [\r\n                {\r\n                    \"href\": \"https://www.youtube.com/watch?v=_V8f_Su9_RA\",\r\n                    \"rel\": \"youtube\",\r\n                    \"title\": \"Link Youtube do Morning Call\"\r\n                },\r\n                {\r\n                    \"href\": \"https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/KkvwgXxVpb3LtpopVhGJ7VgeKbp23imgFbBrImW4W_Q/n/gr618lalrmiy/b/morningcalls/o/Morning%20Call%20Safra%20-%2014_07_2020.m4a\",\r\n                    \"rel\": \"audioFile\",\r\n                    \"title\": \"Arquivo .m4a do Morning Call\"\r\n                },\r\n                {\r\n                    \"href\": \"https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/A4foEVfocaZE-enp7tmLdButDRwCxamcryNOCte3P1Q/n/gr618lalrmiy/b/morningcalls/o/Morning%20Call%20Safra%20-%2014_07_2020.mp4\",\r\n                    \"rel\": \"videoFile\",\r\n                    \"title\": \"Arquivo .mp4 do Morning Call\"\r\n                }\r\n            ],\r\n            \"playlist\": \"morningCalls\",\r\n            \"title\": \"Morning Call Safra - 14/07/2020\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -256,21 +260,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/qrcode/:hash",
+					"raw": "http://34.71.109.67:3000/safra/morning_calls",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"34",
+						"71",
+						"109",
+						"67"
 					],
 					"port": "3000",
 					"path": [
-						"qrcode",
-						":hash"
-					],
-					"variable": [
-						{
-							"key": "hash",
-							"value": "8463725d15a6592e02ec7f6030937eff238dbe091cb713e10ad9f49deadfa611"
-						}
+						"safra",
+						"morning_calls"
 					]
 				}
 			},
