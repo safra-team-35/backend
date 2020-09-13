@@ -7,13 +7,8 @@ var (
 	Migrations = []darwin.Migration{
 		{
 			Version:     1,
-			Description: "Selecting default database",
-			Script:      `USE 'wallet_db`,
-		},
-		{
-			Version:     2,
 			Description: "Creating table tab_company_partners",
-			Script: `CREATE TABLE IF NOT EXISTS tab_company_partners (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_company_partners (
 				id INT NOT NULL AUTO_INCREMENT,
 				uuid CHAR(36) NOT NULL,
 				name VARCHAR(300) NOT NULL,
@@ -28,19 +23,19 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     3,
+			Version:     2,
 			Description: "Inserting data on table tab_company_partners",
 			Script: `
-				INSERT INTO tab_company_partners 
+				INSERT INTO wallet_db.tab_company_partners 
 					(id,uuid,name,document_number)
 				VALUES
 					(1,'66a4917e-39d1-463f-84b8-a31cded3dc20','Mercado Livre','12434595000172');
 			`,
 		},
 		{
-			Version:     4,
+			Version:     3,
 			Description: "Creating table tab_qrcode",
-			Script: `CREATE TABLE IF NOT EXISTS tab_qrcode (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_qrcode (
 				id INT NOT NULL AUTO_INCREMENT,
 				company_id INT NOT NULL,
 				price DECIMAL(7,2) NOT NULL,
@@ -62,9 +57,9 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     5,
+			Version:     4,
 			Description: "Creating table tab_payment_type",
-			Script: `CREATE TABLE IF NOT EXISTS tab_payment_type (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_payment_type (
 				id INT NOT NULL AUTO_INCREMENT,
 				name VARCHAR(100) NOT NULL,
 				active TINYINT(1) NOT NULL DEFAULT 1,
@@ -76,10 +71,10 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     6,
+			Version:     5,
 			Description: "Inserting data on table tab_payment_type",
 			Script: `
-				INSERT INTO tab_payment_type 
+				INSERT INTO wallet_db.tab_payment_type 
 					(id,name)
 				VALUES
 				(1,'saldo'),
@@ -88,9 +83,9 @@ var (
 			`,
 		},
 		{
-			Version:     7,
+			Version:     6,
 			Description: "Creating table tab_user",
-			Script: `CREATE TABLE IF NOT EXISTS tab_user (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_user (
 				id INT NOT NULL AUTO_INCREMENT,
 				name VARCHAR(100) NOT NULL,
 				birthdate DATE NOT NULL,
@@ -106,19 +101,19 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     8,
+			Version:     7,
 			Description: "Inserting data on table tab_user",
 			Script: `
-				INSERT INTO tab_user 
+				INSERT INTO wallet_db.tab_user 
 					(id,name,birthdate,document_number,email,phone_number)
 				VALUES
 				(1,'Diego Clair','1993-10-25','01234567890','diego93rodrigues@gmail.com','991313476');
 			`,
 		},
 		{
-			Version:     9,
+			Version:     8,
 			Description: "Creating table tab_user_address",
-			Script: `CREATE TABLE IF NOT EXISTS tab_user_address (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_user_address (
 				id INT NOT NULL AUTO_INCREMENT,
 				user_id INT NOT NULL,
 				country VARCHAR(100) NOT NULL,
@@ -143,10 +138,10 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     10,
+			Version:     9,
 			Description: "Inserting data on table tab_user_address",
 			Script: `
-				INSERT INTO tab_user_address 
+				INSERT INTO wallet_db.tab_user_address 
 					(id,user_id,country,street,number,complement,zip_code,city,federative_unit)
 				VALUES
 				(1,1,'Brasil','Av Paulista','2100','5 andar','01310300','São Paulo','SP'),
@@ -154,9 +149,9 @@ var (
 			`,
 		},
 		{
-			Version:     11,
+			Version:     10,
 			Description: "Creating table tab_order",
-			Script: `CREATE TABLE IF NOT EXISTS tab_order (
+			Script: `CREATE TABLE IF NOT EXISTS wallet_db.tab_order (
 				id INT NOT NULL AUTO_INCREMENT,
 				user_id INT NOT NULL,
 				company_id INT NOT NULL,
