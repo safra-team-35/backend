@@ -56,6 +56,7 @@ func (s *Controller) handleCreateQRCode(c *gin.Context) {
 	if mapErr != nil {
 		restErr := resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
 		c.JSON(restErr.StatusCode(), restErr)
+		return
 	}
 
 	expirationMinutes := time.Duration(input.ExpirationTime) * time.Minute
@@ -86,6 +87,7 @@ func (s *Controller) handleGetQRCodeDataByHash(c *gin.Context) {
 	if mapErr != nil {
 		err = resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	c.JSON(http.StatusOK, response)

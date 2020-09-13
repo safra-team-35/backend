@@ -43,6 +43,7 @@ func (s *Controller) handleGetUserAddress(c *gin.Context) {
 	if parseErr != nil {
 		err := resterrors.NewBadRequestError("user_id parameter is invalid")
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	userAddresses, err := s.userService.GetUserAddress(int64(userID))
@@ -56,6 +57,7 @@ func (s *Controller) handleGetUserAddress(c *gin.Context) {
 	if mapErr != nil {
 		err = resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	c.JSON(http.StatusOK, response)
@@ -67,6 +69,7 @@ func (s *Controller) handleCreateNewOrder(c *gin.Context) {
 	if parseErr != nil {
 		err := resterrors.NewBadRequestError("user_id parameter is invalid")
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	input := viewmodel.Order{}
@@ -85,6 +88,7 @@ func (s *Controller) handleCreateNewOrder(c *gin.Context) {
 	if mapErr != nil {
 		restErr := resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
 		c.JSON(restErr.StatusCode(), restErr)
+		return
 	}
 
 	order.UserID = int64(userID)
@@ -104,6 +108,7 @@ func (s *Controller) handleGetOrderSummary(c *gin.Context) {
 	if parseErr != nil {
 		err := resterrors.NewBadRequestError("user_id parameter is invalid")
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	orderSummary, err := s.userService.GetUserOrdersSummary(int64(userID))
@@ -117,6 +122,7 @@ func (s *Controller) handleGetOrderSummary(c *gin.Context) {
 	if mapErr != nil {
 		err = resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
 		c.JSON(err.StatusCode(), err)
+		return
 	}
 
 	c.JSON(http.StatusOK, response)
