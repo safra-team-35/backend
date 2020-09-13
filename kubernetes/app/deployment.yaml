@@ -19,6 +19,13 @@ spec:
         ports:
         - containerPort: 3000
 
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+              
         envFrom:
         - configMapRef:
             name: app-conf

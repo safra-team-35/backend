@@ -16,11 +16,11 @@ data:
 
     LOG_CHANNEL=stack
 
-    DB_HOST="wallet-db" #wallet-db is the mysql container name
+    DB_HOST="wallet-db"
     DB_USER="root"
     DB_PASSWORD="root"
     DB_NAME="wallet_db"
-    DB_PORT=3306 #Default mysql port
+    DB_PORT=3306
     MAX_LIFE_IN_MINUTES=1
     MAX_IDLE_CONNS=5
     MAX_OPEN_CONNS=100
