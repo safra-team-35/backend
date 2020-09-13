@@ -23,7 +23,7 @@ func Instance() (contract.RepoManager, error) {
 	cfg := config.GetDBConfig()
 
 	dataSourceName := fmt.Sprintf("%s:root@tcp(%s:%s)/%s?charset=utf8",
-		cfg.Username, cfg.Password, cfg.Host, cfg.Port, cfg.DBName,
+		cfg.Username, cfg.Host, cfg.Port, cfg.DBName,
 	)
 
 	log.Println("Connecting to database...")
