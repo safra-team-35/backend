@@ -1,7 +1,7 @@
 package service
 
 import (
-	"fmt"
+	"net/http"
 
 	"github.com/diegoclair/go_utils-lib/resterrors"
 	"github.com/diegoclair/go_utils-lib/validstruct"
@@ -11,19 +11,21 @@ import (
 )
 
 type qrcodeService struct {
-	svc *Service
+	svc    *Service
+	client *http.Client
 }
 
 //newQRCodeService return a new instance of the service
 func newQRCodeService(svc *Service) contract.QRCodeService {
+	client := svc.httpClient
 	return &qrcodeService{
-		svc: svc,
+		svc:    svc,
+		client: client,
 	}
 }
 
 func (s *qrcodeService) CreateQRCode(qrcode entity.QRCode, uuid string) (string, resterrors.RestErr) {
 
-	fmt.Println("uuid: ", uuid)
 	companyID, err := s.svc.db.Company().GetCompanyIDByUUID(uuid)
 	if err != nil {
 		return "", err

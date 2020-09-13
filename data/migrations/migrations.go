@@ -144,7 +144,8 @@ var (
 				INSERT INTO tab_user_address 
 					(id,user_id,country,street,number,complement,zip_code,city,federative_unit)
 				VALUES
-				(1,1,'Brasil','Av Paulista','2100','5 andar','01310300','São Paulo','SP' );
+				(1,1,'Brasil','Av Paulista','2100','5 andar','01310300','São Paulo','SP'),
+				(2,1,'Brasil','Rua Bela Cintra','2182','','01415008','São Paulo','SP');
 			`,
 		},
 		{

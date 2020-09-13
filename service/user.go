@@ -43,9 +43,17 @@ func (s *userService) CreateOrder(order entity.Order) (orderNumber string, err r
 		return orderNumber, err
 	}
 
+	err = s.processPayment()
+	if err != nil {
+		return orderNumber, err
+	}
 	return orderNumber, nil
 }
 
 func (s *userService) sendOrderToPartner() (orderNumber string, err resterrors.RestErr) {
+	return "4587T06B", nil
+}
+
+func (s *userService) processPayment() (err resterrors.RestErr) {
 	return
 }
