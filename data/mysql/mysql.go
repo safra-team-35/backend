@@ -52,6 +52,7 @@ func Instance() (contract.RepoManager, error) {
 
 	err = d.Migrate()
 	if err != nil {
+		logger.Error("Migrate Error: ", err)
 		return nil, err
 	}
 
