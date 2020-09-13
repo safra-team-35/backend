@@ -1,5 +1,10 @@
 
 steps:
 - id: "Starting docker-compose"
-  name: 'docker/compose:1.19.0'
+  name: 'gcr.io/$PROJECT_ID/docker-compose:1.25.5'
   args: ['up', '-d']
+
+- id: "Deploying to app engine"
+  name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+  timeout: '1600s'
