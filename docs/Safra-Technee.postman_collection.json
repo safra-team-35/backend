@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "70ea57bb-1710-4e3f-8636-947ac54cbd27",
+		"name": "Safra-Technee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.71.109.67:3000/ping",
+					"protocol": "http",
+					"host": [
+						"34",
+						"71",
+						"109",
+						"67"
+					],
+					"port": "3000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/partner/:company_id/qrcode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0b589533-ceb9-42cb-b45b-d4d454c163fb",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"price\": 49.50,\r\n    \"product_id\": 150,\r\n    \"expiration_time\": 120\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.71.109.67:3000/partner/:company_id/qrcode",
+					"protocol": "http",
+					"host": [
+						"34",
+						"71",
+						"109",
+						"67"
+					],
+					"port": "3000",
+					"path": [
+						"partner",
+						":company_id",
+						"qrcode"
+					],
+					"variable": [
+						{
+							"key": "company_id",
+							"value": "66a4917e-39d1-463f-84b8-a31cded3dc20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/qrcode:hash",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.71.109.67:3000/qrcode/:hash",
+					"protocol": "http",
+					"host": [
+						"34",
+						"71",
+						"109",
+						"67"
+					],
+					"port": "3000",
+					"path": [
+						"qrcode",
+						":hash"
+					],
+					"variable": [
+						{
+							"key": "hash",
+							"value": "8463725d15a6592e02ec7f6030937eff238dbe091cb713e10ad9f49deadfa611"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/:user_id/address",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.71.109.67:3000/user/:user_id/address",
+					"protocol": "http",
+					"host": [
+						"34",
+						"71",
+						"109",
+						"67"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						":user_id",
+						"address"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/:user_id/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"hash\": \"ff7db5962193e5b3c081f7752a76a14c12303bf69ad9de0ead072eddf90aac73\" ,\r\n    \"payment_type\": 1,\r\n    \"address_id\": 1,\r\n    \"freight\": 21.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.71.109.67:3000/user/:user_id/order",
+					"protocol": "http",
+					"host": [
+						"34",
+						"71",
+						"109",
+						"67"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						":user_id",
+						"order"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/:user_id/order_summary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/qrcode/:hash",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"qrcode",
+						":hash"
+					],
+					"variable": [
+						{
+							"key": "hash",
+							"value": "8463725d15a6592e02ec7f6030937eff238dbe091cb713e10ad9f49deadfa611"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/safra/morning_calls",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/qrcode/:hash",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"qrcode",
+						":hash"
+					],
+					"variable": [
+						{
+							"key": "hash",
+							"value": "8463725d15a6592e02ec7f6030937eff238dbe091cb713e10ad9f49deadfa611"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

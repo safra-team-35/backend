@@ -14,7 +14,36 @@
 
 * Database:
   - MySQL
-<img src="" >
+  - <img src=".github/database-diagram.png" width="700" height="600" >
+
+### Endpoints
+
+##### Generate a new hash to use into a qrcode
+`POST http://34.71.109.67:3000/partner/:company_id/qrcode`
+
+##### Get qrcode info when user scan the qrcode
+`GET http://34.71.109.67:3000/qrcode/:hash`
+
+##### Get user addresses list
+`GET http://34.71.109.67:3000/user/:user_id/address`
+
+##### Transfere valores entre contas
+`GET [host]/accounts/v1/accounts/{accountId}/transfers`
+
+##### Create new order for user
+`POST http://34.71.109.67:3000/user/:user_id/order`
+
+##### Get all user orders
+`GET http://34.71.109.67:3000/user/:user_id/order_summary`
+
+##### Return the list with some morning calls created by Safra
+`GET http://34.71.109.67:3000/safra/morning_calls`
+
+
+### Postman Collection to simulate the process
+
+Import this [Postman Collection](https://github.com/safra-team-35/backend/docs/Safra-Technee.postman_collection.json) in [Postman](https://www.postman.com/).
+
 
 ## 💻 Tech infos
 This application has the CICD implemented anb is currently deployed into kubernetes cluster on Google Cloud Platform.
