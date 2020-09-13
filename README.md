@@ -9,12 +9,16 @@
 * Language:
   - [Golang](https://golang.org/)  
 
-* Arquitetura técnica:
+* Technical architecture:
   - <img src=".github/DiagramaTecnico.png" width="700" height="600">
 
 * Database:
   - MySQL
 <img src="" >
+
+## 💻 Tech infos
+This application has the CICD implemented anb is currently deployed into kubernetes cluster on Google Cloud Platform.
+The host to use GCP app is: http://34.71.109.67:3000 or if you want to run in your machine, please follow the steps below.
 
 ## ❗ Requirements
 To run this application you have to install (if you don't have already installed) the follow programs:
