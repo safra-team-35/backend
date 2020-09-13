@@ -34,13 +34,18 @@ func Instance() (contract.RepoManager, error) {
 		return nil, err
 	}
 
-	if _, err = db.Exec("use wallet_db;"); err != nil {
-		logger.Error("Default Database error: ", err)
+	err = db.Ping()
+	if err != nil {
 		return nil, err
 	}
 
-	err = db.Ping()
-	if err != nil {
+	if _, err = db.Exec("CREATE DATABASE IF NOT EXISTS wallet_db;"); err != nil {
+		logger.Error("Create Database error: ", err)
+		return nil, err
+	}
+
+	if _, err = db.Exec("USE wallet_db;"); err != nil {
+		logger.Error("Default Database error: ", err)
 		return nil, err
 	}
 
