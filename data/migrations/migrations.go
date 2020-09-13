@@ -7,6 +7,11 @@ var (
 	Migrations = []darwin.Migration{
 		{
 			Version:     1,
+			Description: "Selecting default database",
+			Script:      `USE 'wallet_db`,
+		},
+		{
+			Version:     2,
 			Description: "Creating table tab_company_partners",
 			Script: `CREATE TABLE IF NOT EXISTS tab_company_partners (
 				id INT NOT NULL AUTO_INCREMENT,
@@ -23,7 +28,7 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     2,
+			Version:     3,
 			Description: "Inserting data on table tab_company_partners",
 			Script: `
 				INSERT INTO tab_company_partners 
@@ -33,7 +38,7 @@ var (
 			`,
 		},
 		{
-			Version:     3,
+			Version:     4,
 			Description: "Creating table tab_qrcode",
 			Script: `CREATE TABLE IF NOT EXISTS tab_qrcode (
 				id INT NOT NULL AUTO_INCREMENT,
@@ -57,7 +62,7 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     4,
+			Version:     5,
 			Description: "Creating table tab_payment_type",
 			Script: `CREATE TABLE IF NOT EXISTS tab_payment_type (
 				id INT NOT NULL AUTO_INCREMENT,
@@ -71,7 +76,7 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     5,
+			Version:     6,
 			Description: "Inserting data on table tab_payment_type",
 			Script: `
 				INSERT INTO tab_payment_type 
@@ -83,7 +88,7 @@ var (
 			`,
 		},
 		{
-			Version:     6,
+			Version:     7,
 			Description: "Creating table tab_user",
 			Script: `CREATE TABLE IF NOT EXISTS tab_user (
 				id INT NOT NULL AUTO_INCREMENT,
@@ -101,7 +106,7 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     7,
+			Version:     8,
 			Description: "Inserting data on table tab_user",
 			Script: `
 				INSERT INTO tab_user 
@@ -111,7 +116,7 @@ var (
 			`,
 		},
 		{
-			Version:     8,
+			Version:     9,
 			Description: "Creating table tab_user_address",
 			Script: `CREATE TABLE IF NOT EXISTS tab_user_address (
 				id INT NOT NULL AUTO_INCREMENT,
@@ -138,7 +143,7 @@ var (
 			) ENGINE=InnoDB CHARACTER SET=utf8;`,
 		},
 		{
-			Version:     9,
+			Version:     10,
 			Description: "Inserting data on table tab_user_address",
 			Script: `
 				INSERT INTO tab_user_address 
@@ -149,7 +154,7 @@ var (
 			`,
 		},
 		{
-			Version:     10,
+			Version:     11,
 			Description: "Creating table tab_order",
 			Script: `CREATE TABLE IF NOT EXISTS tab_order (
 				id INT NOT NULL AUTO_INCREMENT,
