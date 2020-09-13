@@ -27,6 +27,7 @@ func Instance() (contract.RepoManager, error) {
 	)
 
 	log.Println("Connecting to database...")
+	log.Println("Connection String: ", dataSourceName)
 
 	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
