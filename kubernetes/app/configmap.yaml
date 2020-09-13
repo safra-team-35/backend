@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-conf
+data:
+  # Here we put all variables that was in our .env file, but we change the
+  # values of db host and redis host, to use our services .yaml and we remove
+  # de environment of DB_PASSWORD and put in deployment.yaml using our secret pass
+  env: |
+  
+    APP_NAME=safra-wallet
+    APP_ENV=local
+    APP_KEY=base64:eeeeqITM0en1firYp5zUN5to7i8TDj36a1zQBRBgOgU=
+    APP_DEBUG=true
+    APP_URL=http://localhost
+
+    LOG_CHANNEL=stack
+
+    DB_HOST="wallet-db" #wallet-db is the mysql container name
+    DB_USER="root"
+    DB_PASSWORD="root"
+    DB_NAME="wallet_db"
+    DB_PORT=3306 #Default mysql port
+    MAX_LIFE_IN_MINUTES=1
+    MAX_IDLE_CONNS=5
+    MAX_OPEN_CONNS=100
+    MYSQL_ROOT_PASSWORD=root
