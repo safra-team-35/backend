@@ -18,20 +18,20 @@ spec:                     # deployment spec
         tier: db            # tier: frontend   ; tier: backend...
     spec:                     # POD spec
       containers:
-      - image: mysql:8.0.21
+      - image: mysql:5.7
         name: mysql-server
         args:
-          - "--ignore-db-dir=lost+found"      
+          - "--ignore-db-dir=lost+found"  
         
-        ports:
-        - containerPort: 3306
-
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-pass
               key: password
+        
+        ports:
+        - containerPort: 3306
         
         volumeMounts: 
         - name: mysql-persistent-storage            # name of our volume definition
