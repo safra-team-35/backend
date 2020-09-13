@@ -97,3 +97,27 @@ func (s *Controller) handleCreateNewOrder(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"orderNumber": orderNumber})
 }
+
+func (s *Controller) handleGetOrderSummary(c *gin.Context) {
+
+	userID, parseErr := strconv.Atoi(c.Param("user_id"))
+	if parseErr != nil {
+		err := resterrors.NewBadRequestError("user_id parameter is invalid")
+		c.JSON(err.StatusCode(), err)
+	}
+
+	orderSummary, err := s.userService.GetUserOrdersSummary(int64(userID))
+	if err != nil {
+		c.JSON(err.StatusCode(), err)
+		return
+	}
+
+	response := []viewmodel.OrderSummary{}
+	mapErr := s.mapper.From(orderSummary).To(&response)
+	if mapErr != nil {
+		err = resterrors.NewInternalServerError("Error to do the mapper: " + fmt.Sprint(mapErr))
+		c.JSON(err.StatusCode(), err)
+	}
+
+	c.JSON(http.StatusOK, response)
+}

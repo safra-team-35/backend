@@ -21,6 +21,11 @@ func (s *userService) GetUserAddress(userID int64) (address []entity.Address, er
 	return s.svc.db.User().GetUserAddress(userID)
 }
 
+func (s *userService) GetUserOrdersSummary(userID int64) (summary []entity.OrderSummary, err resterrors.RestErr) {
+
+	return s.svc.db.User().GetOrderSummary(userID)
+}
+
 func (s *userService) CreateOrder(order entity.Order) (orderNumber string, err resterrors.RestErr) {
 
 	orderDetail, err := s.svc.db.QRCode().GetByHash(order.Hash)

@@ -19,6 +19,7 @@ type QRCodeService interface {
 type UserService interface {
 	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
 	CreateOrder(order entity.Order) (orderNumber string, err resterrors.RestErr)
+	GetUserOrdersSummary(userID int64) (summary []entity.OrderSummary, err resterrors.RestErr)
 }
 
 // SafraService holds a safra service operations

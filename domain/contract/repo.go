@@ -31,4 +31,5 @@ type CompanyRepo interface {
 type UserRepo interface {
 	GetUserAddress(userID int64) (address []entity.Address, err resterrors.RestErr)
 	CreateOrder(order entity.Order) (err resterrors.RestErr)
+	GetOrderSummary(userID int64) (summary []entity.OrderSummary, restErr resterrors.RestErr)
 }

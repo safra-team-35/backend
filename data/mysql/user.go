@@ -112,3 +112,48 @@ func (s *userRepo) CreateOrder(order entity.Order) resterrors.RestErr {
 
 	return nil
 }
+
+func (s *userRepo) GetOrderSummary(userID int64) (summary []entity.OrderSummary, restErr resterrors.RestErr) {
+
+	query := `
+		SELECT
+			tcp.name,
+			o.price,
+			o.freight
+
+		FROM 	tab_order 	o
+
+		INNER JOIN tab_company_partners tcp
+			ON o.company_id = tcp.id
+
+		WHERE  	o.user_id = ?`
+
+	stmt, err := s.db.Prepare(query)
+	if err != nil {
+		logger.Error("GetOrderSummary", err)
+		return summary, resterrors.NewInternalServerError("Database error")
+	}
+	defer stmt.Close()
+
+	rows, err := stmt.Query(userID)
+	if err != nil {
+		logger.Error("GetOrderSummary", err)
+		return summary, resterrors.NewInternalServerError("Database error")
+	}
+
+	var orderSummary entity.OrderSummary
+	for rows.Next() {
+		err = rows.Scan(
+			&orderSummary.CompanyName,
+			&orderSummary.Price,
+			&orderSummary.Freight,
+		)
+		if err != nil {
+			logger.Error("GetOrderSummary", err)
+			return nil, mysqlutils.HandleMySQLError(err)
+		}
+		summary = append(summary, orderSummary)
+	}
+
+	return summary, nil
+}

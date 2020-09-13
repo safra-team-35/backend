@@ -22,4 +22,5 @@ func NewRouter(ctrl *Controller, router *gin.Engine) *UserRouter {
 func (r *UserRouter) RegisterRoutes() {
 	r.router.GET("/user/:user_id/address", r.ctrl.handleGetUserAddress)
 	r.router.POST("/user/:user_id/order", r.ctrl.handleCreateNewOrder)
+	r.router.GET("/user/:user_id/order_summary", r.ctrl.handleGetOrderSummary)
 }

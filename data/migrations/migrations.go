@@ -196,5 +196,10 @@ var (
 			Description: "Adding column freight to table order",
 			Script:      "ALTER TABLE tab_order ADD COLUMN freight DECIMAL(7,2) NOT NULL AFTER price;",
 		},
+		{
+			Version:     12,
+			Description: "Changing column freight",
+			Script:      "ALTER TABLE tab_order MODIFY freight DECIMAL(7,2) NOT NULL DEFAULT 0.00 AFTER price;",
+		},
 	}
 )
