@@ -37,6 +37,7 @@ func New(db contract.RepoManager) *Service {
 type Manager interface {
 	QRCodeService(svc *Service) contract.QRCodeService
 	UserService(svc *Service) contract.UserService
+	SafraService(svc *Service) contract.SafraService
 }
 
 type serviceManager struct {
@@ -54,4 +55,8 @@ func (s *serviceManager) QRCodeService(svc *Service) contract.QRCodeService {
 
 func (s *serviceManager) UserService(svc *Service) contract.UserService {
 	return newUserService(svc)
+}
+
+func (s *serviceManager) SafraService(svc *Service) contract.SafraService {
+	return newSafraService(svc)
 }
