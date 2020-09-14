@@ -4,7 +4,8 @@
 ## Description
 💳 This application aims to offer a new disruptive way to shop online.
   
-[Demo video]()  
+[Demo video](https://www.youtube.com/watch?v=fW9S_7GUWg8)  
+[Pitch video](https://youtu.be/pr8_DBdEyis)  
 
 * Language:
   - [Golang](https://golang.org/)  
