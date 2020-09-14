@@ -2,6 +2,7 @@ package viewmodel
 
 // Address model
 type Address struct {
+	ID             int64  `json:"id,omitempty"`
 	Country        string `json:"country,omitempty"`
 	Street         string `json:"street,omitempty"`
 	Number         string `json:"number,omitempty"`
