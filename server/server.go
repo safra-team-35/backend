@@ -2,6 +2,7 @@ package server
 
 import (
 	"github.com/IQ-tech/go-mapper"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/safra-team-35/backend/server/routes/pingroute"
 	"github.com/safra-team-35/backend/server/routes/qrcoderoute"
@@ -26,6 +27,8 @@ func InitServer(svc *service.Service) *gin.Engine {
 	qrcodeService := svm.QRCodeService(svc)
 	userService := svm.UserService(svc)
 	safraService := svm.SafraService(svc)
+
+	srv.Use(cors.Default())
 
 	return setupRoutes(srv, &controller{
 		pingController:   pingroute.NewController(),
