@@ -23,7 +23,7 @@ func newQRCodeRepo(db *sql.DB) *qrcodeRepo {
 func (s *qrcodeRepo) CreateQRCode(qrcode entity.QRCode) resterrors.RestErr {
 
 	query := `
-		INSERT INTO tab_qrcode (
+		INSERT INTO wallet_db.tab_qrcode (
 			company_id,
 			price,
 			product_id,
@@ -63,7 +63,8 @@ func (s *qrcodeRepo) GetByHash(hash string) (qrcode entity.QRCode, restErr reste
 			tq.price,
 			tq.product_id
 			
-		FROM 	tab_qrcode 	tq
+		FROM 	wallet_db.tab_qrcode 	tq
+		
 		INNER JOIN tab_company_partners tcp
 			ON tcp.id 	= tq.company_id
 

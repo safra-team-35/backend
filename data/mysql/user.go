@@ -33,7 +33,7 @@ func (s *userRepo) GetUserAddress(userID int64) (addresses []entity.Address, res
 		tua.city,
 		tua.federative_unit
 
-		FROM 	tab_user_address 	tua
+		FROM 	wallet_db.tab_user_address 	tua
 		WHERE  	tua.user_id = ?`
 
 	stmt, err := s.db.Prepare(query)
@@ -74,7 +74,7 @@ func (s *userRepo) GetUserAddress(userID int64) (addresses []entity.Address, res
 func (s *userRepo) CreateOrder(order entity.Order) resterrors.RestErr {
 
 	query := `
-		INSERT INTO tab_order (
+		INSERT INTO wallet_db.tab_order (
 			user_id,
 			company_id,
 			price,
@@ -121,7 +121,7 @@ func (s *userRepo) GetOrderSummary(userID int64) (summary []entity.OrderSummary,
 			o.price,
 			o.freight
 
-		FROM 	tab_order 	o
+		FROM 	wallet_db.tab_order 	o
 
 		INNER JOIN tab_company_partners tcp
 			ON o.company_id = tcp.id

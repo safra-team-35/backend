@@ -24,7 +24,7 @@ func (s *companyRepo) GetCompanyIDByUUID(uuid string) (int64, resterrors.RestErr
 	query := `
 		SELECT 	tcp.id
 
-		FROM 	tab_company_partners 	tcp
+		FROM 	wallet_db.tab_company_partners 	tcp
 		WHERE  	tcp.uuid = ?`
 
 	stmt, err := s.db.Prepare(query)
