@@ -44,7 +44,7 @@ Import this [Postman Collection](https://github.com/safra-team-35/backend/docs/S
 
 
 ## 💻 Tech infos
-This application has the CICD implemented anb is currently deployed into kubernetes cluster on Google Cloud Platform.
+This application has the CICD implemented and is currently deployed into kubernetes cluster on Google Cloud Platform.
 The host to use GCP app is: http://34.71.109.67:3000 or if you want to run in your machine, please follow the steps below.
 
 ## ❗ Requirements
